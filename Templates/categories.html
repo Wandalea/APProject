@@ -1,0 +1,23 @@
+
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="page">
+    <h1>Crystal Types</h1>
+    <p>Choose a Crystal category to discover.</p>
+        <div class="grid">
+        {% for crystal in crystalTypes %}
+            <div class="card">
+                <div class="text">
+                    <h2>{{crystal.name}}</h2>
+                    <p>{{crystal.description}}</p>
+                </div>
+                <div class="image">
+<!--                     <img src="{{ url_for('static', filename='images/' + crystal.image) }}" alt="{{ crystal.name }}">-->
+                         <img src="https://via.placeholder.com/150" alt="placeholder">
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
