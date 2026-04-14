@@ -1,9 +1,10 @@
-from flask import flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session
 from werkzeug.utils import secure_filename
 import os
 
+app = Flask(__name__)
 
-@app.route("categories")
+@app.route("/categories")
 def categories():
     crystalTypes = [
         {
