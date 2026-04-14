@@ -1,0 +1,56 @@
+.page {
+    padding: 30px;
+    text-align: center;
+
+}
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.card {
+    width: 280px;
+    min-height: 150px;
+    padding: 20px;
+    border-radius: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    box-shadow: 4px 4px 12px black;
+    background: linear-gradient(125deg, #38c9d9, #384bd9 );
+}
+
+.text {
+    text-align: left;
+    max-width: 170px;
+}
+
+.text h2 {
+    margin: 0, 0, 10px, 0;
+    font-size: 24px;
+}
+
+.text p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.image img {
+    width: 70px;
+    height:70px;
+    object-fit: contain;
+}
+
+.home-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #38c9d9;
+    color: aliceblue;
+    text-decoration: none;
+    border-radius: 8px;
+}
