@@ -8,7 +8,7 @@ app.config['SESSION_PERMANENT'] = True
 app.config['SESSION_TYPE'] = "filesystem"
 
 Session(app)
-fine_save_location = "static/images"
+file_save_location = "static/images"
 
 crystals = []
 
@@ -16,7 +16,7 @@ crystals = []
 def home():
     return render_template('home.html')
 
-@app.route("/categories")
+@app.route('/categories')
 def categories():
     crystalTypes = [
         {
@@ -58,7 +58,7 @@ def categories():
     ]
     return render_template("categories.html", crystalTypes=crystalTypes)
 
-@app.route("/insert", methods={"GET", "POST"})
+@app.route('/insert', methods={'GET', 'POST'})
 def insert():
     if request.method == "POST":
         crystal_name = request.form["name"]
@@ -75,7 +75,8 @@ def insert():
         crystals.append(new_crystal)
         
         return redirect(url_for("categories"))
-    return redirect(url_for("categories"))
+    return render_template("insert.html")
+
 
 
 if __name__ == "__main__":
