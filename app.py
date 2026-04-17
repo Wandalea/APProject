@@ -1,8 +1,16 @@
-from flask import Flask, render_template, request, redirect, url_for, session
-# from werkzeug.utils import secure_filename
+from flask import Flask, render_template, request, redirect, url_for, session, flash
+from flask_session import Session
 import os
 
 app = Flask(__name__)
+
+app.config['SESSION_PERMANENT'] = True
+app.config['SESSION_TYPE'] = "filesystem"
+
+Session(app)
+fine_save_location = "static/images"
+
+crystals = []
 
 @app.route('/')
 def home():
@@ -49,6 +57,7 @@ def categories():
         },
     ]
     return render_template("categories.html", crystalTypes=crystalTypes)
+
 
 
 if __name__ == "__main__":
