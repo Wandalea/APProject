@@ -9,7 +9,7 @@
         {% for crystal in crystalTypes %}
             <div class="card">
                 <div class="text">
-                    <h2>{{crystal.name}}</h2>
+                    <h2><a href="{{ url_for('category_page', category_name=crystal.name) }}">{{crystal.name}}</a></h2>
                     <p>{{crystal.description}}</p>
                 </div>
                 <div class="image">
