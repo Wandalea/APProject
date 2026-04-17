@@ -79,7 +79,14 @@ def categories():
     return render_template("categories.html", crystalTypes=crystalTypes)
 
 
+@app.route("/category/<category_name>")
+def category_page(category_name):
+    organized_crystals = []
+    for crystal in crystals:
+        if crystal["category"] == category_name:
+            organized_crystals.append(crystal)
 
+    return render_template("category_page.html", category_name=category_name, crystals= organized_crystals)
 
 
 if __name__ == "__main__":
