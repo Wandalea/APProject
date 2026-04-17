@@ -21,7 +21,7 @@ def insert():
     if request.method == "POST":
         crystal_name = request.form["name"]
         crystal_description = request.form["description"]
-        crystal_image = request.form["image"]
+        crystal_image = request.files["image"]
         crystal_category = request.form["category"]
 
         new_crystal = {
