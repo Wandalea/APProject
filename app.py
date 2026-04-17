@@ -16,6 +16,26 @@ crystals = []
 def home():
     return render_template('home.html')
 
+@app.route('/insert', methods={'GET', 'POST'})
+def insert():
+    if request.method == "POST":
+        crystal_name = request.form["name"]
+        crystal_description = request.form["description"]
+        crystal_image = request.form["image"]
+        crystal_category = request.form["category"]
+
+        new_crystal = {
+            "name": crystal_name,
+            "description": crystal_description,
+            "image": crystal_image,
+            "category": crystal_category
+        }
+        crystals.append(new_crystal)
+        
+        return redirect(url_for("categories"))
+    return render_template("insert.html")
+
+
 @app.route('/categories')
 def categories():
     crystalTypes = [
@@ -58,24 +78,7 @@ def categories():
     ]
     return render_template("categories.html", crystalTypes=crystalTypes)
 
-@app.route('/insert', methods={'GET', 'POST'})
-def insert():
-    if request.method == "POST":
-        crystal_name = request.form["name"]
-        crystal_description = request.form["description"]
-        crystal_image = request.form["image"]
-        crystal_category = request.form["category"]
 
-        new_crystal = {
-            "name": crystal_name,
-            "description": crystal_description,
-            "image": crystal_image,
-            "category": crystal_category
-        }
-        crystals.append(new_crystal)
-        
-        return redirect(url_for("categories"))
-    return render_template("insert.html")
 
 
 
