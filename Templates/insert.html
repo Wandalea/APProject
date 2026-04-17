@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add crystal</title>
+</head>
+<body>
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="page">
+    <h1>Add a crystal to your collection</h1>
+
+    <form method="POST" action="{{ url_for('insert') }}" enctype="multipart/form-data">
+        <label for="name">Crystal Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="description">Description:</label>
+        <input type="text" id="description" name="description">
+        <input type="file" id="image" name="image" required>
+
+        <label for="category">category</label>
+        <select id="category" name="category" required>
+            <option value="Raw Crystals">Raw Crystals</option>
+            <option value="Tumbled Crystals">Tumbled Crystals</option>
+            <option value="Crystal Towers">Crystal Towers</option>
+            <option value="Carved Crystals">Carved Crystals</option>
+            <option value="Crystal Hearts">Crystal Hearts</option>
+            <option value="Crystal Clusters">Crystal Clusters</option>
+        </select>
+
+        <button type="submit">Add Crystal to collection</button>
+    </form>
+</div>
+{% endblock %}   
+</body>
+</html>
