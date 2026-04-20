@@ -73,51 +73,54 @@ def remove():
 def categories():
     session_storage()
 
+    if "crystalTypes" not in session:
 
-    crystalTypes = [
-        {
-            "name": "Raw Crystals",
-            "description": "Natural and unpolished crystals",
-            "image" : "rawCrystals.jpg",
-            "Uses" : "",
-            "crystals" : []
-        },
-        {
-            "name": "Tumbled Crystals",
-            "description": "Smooth polished pocket crystals",
-            "image": "tumbledCrystals.jpg",
-            "Uses" : "",
-            "crystals" : []
-        },
-        {
-            "name": "Crystal Towers",
-            "description": "Pointed standing crystal pieces",
-            "image": "towerCrystals.jpg",
-            "Uses" : "",
-            "crystals" : []
-        },
-        {
-            "name": "Carved Crystals",
-            "description": "Hand carved crystal pieces",
-            "image": "carvedCrystals.jpg",
-            "Uses" : "",
-            "crystals" : []
-        },
-        {
-            "name": "Crystal Hearts",
-            "description": "Heart shaped crystal pieces",
-            "image": "heartCrystals.jpg",
-            "Uses" : "",
-            "crystals" : []
-        },
-        {
-            "name": "Crystal Clusters",
-            "description": "Grouped crystal pieces",
-            "image": "clusterCrystals.jpg",
-            "Uses" : "",
-            "crystals" : []
-        },
-    ]
+        session["crystalTypes"] = [
+            {
+                "name": "Raw Crystals",
+                "description": "Natural and unpolished crystals",
+                "image" : "rawCrystals.jpg",
+                "Uses" : "",
+                "crystals" : []
+            },
+            {
+                "name": "Tumbled Crystals",
+                "description": "Smooth polished pocket crystals",
+                "image": "tumbledCrystals.jpg",
+                "Uses" : "",
+                "crystals" : []
+            },
+            {
+                "name": "Crystal Towers",
+                "description": "Pointed standing crystal pieces",
+                "image": "towerCrystals.jpg",
+                "Uses" : "",
+                "crystals" : []
+            },
+            {
+                "name": "Carved Crystals",
+                "description": "Hand carved crystal pieces",
+                "image": "carvedCrystals.jpg",
+                "Uses" : "",
+                "crystals" : []
+            },
+            {
+                "name": "Crystal Hearts",
+                "description": "Heart shaped crystal pieces",
+                "image": "heartCrystals.jpg",
+                "Uses" : "",
+                "crystals" : []
+            },
+            {
+                "name": "Crystal Clusters",
+                "description": "Grouped crystal pieces",
+                "image": "clusterCrystals.jpg",
+                "Uses" : "",
+                "crystals" : []
+            },
+        ]
+    crystalTypes = session["crystalTypes"]
+
     return render_template("categories.html", crystalTypes=crystalTypes)
 
 
