@@ -4,15 +4,18 @@ import os
 
 app = Flask(__name__)
 
+
 app.config['SESSION_PERMANENT'] = True
 app.config['SESSION_TYPE'] = "filesystem"
-
 Session(app)
+
 file_save_location = "static/images"
 
-crystals = []
-
-
+def session_storage():
+    if "crystals" not in session:
+        session["crystals"] = []
+    if "next_crystal" not in session:
+        session["next_crystal"] = 1
 
 @app.route('/')
 def home():
@@ -20,6 +23,8 @@ def home():
 
 @app.route('/insert', methods=['GET', 'POST'])
 def insert():
+    session_storage()
+
     if request.method == "POST":
         crystal_name = request.form["name"]
         crystal_description = request.form["description"]
@@ -31,19 +36,27 @@ def insert():
         crystal_image.save(filepath)
 
         new_crystal = {
+            "id": session["next_crystal"],
             "name": crystal_name,
             "description": crystal_description,
             "image": filename,
             "category": crystal_category
         }
+
+        crystals = session["crystals"]
         crystals.append(new_crystal)
+        session["crystals"] = crystals
+        session["next_crystal"] = session["next_crystal"] +1
         
-        return redirect(url_for("categories"))
+        return redirect(url_for("category_page", category_name =crystal_category))
     return render_template("insert.html")
+
 
 
 @app.route('/categories')
 def categories():
+    session_storage()
+
     crystalTypes = [
         {
             "name": "Raw Crystals",
@@ -87,8 +100,10 @@ def categories():
 
 @app.route("/category/<category_name>")
 def category_page(category_name):
+    session_storage()
+
     organized_crystals = []
-    for crystal in crystals:
+    for crystal in session["crystals"]:
         if crystal["category"] == category_name:
             organized_crystals.append(crystal)
 
