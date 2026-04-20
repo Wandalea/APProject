@@ -51,7 +51,23 @@ def insert():
         return redirect(url_for("category_page", category_name =crystal_category))
     return render_template("insert.html")
 
+@app.route("/remove", methods=["GET", "POST"])
+def remove():
+    session_storage()
 
+    if request.method == "POST":
+        crystal_name = request.form["name"]
+        crystal_category = request.form["category"]
+        updated_crystals = []
+
+        for crystal in session["crystals"]:
+            if not (crystal["name"].lower() == crystal_name.lower()
+                    and crystal["category"] == crystal_category):
+                updated_crystals.append(crystal)
+        session["crystals"] = updated_crystals
+
+        return redirect(url_for("category_page", category_name= crystal_category))
+    return render_template("remove.html")
 
 @app.route('/categories')
 def categories():
