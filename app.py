@@ -3,7 +3,7 @@ from flask_session import Session
 import os
 
 app = Flask(__name__)
-
+app.secret_key = "mysecretkey123"
 
 app.config['SESSION_PERMANENT'] = True
 app.config['SESSION_TYPE'] = "filesystem"
