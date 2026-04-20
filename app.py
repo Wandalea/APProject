@@ -12,11 +12,13 @@ file_save_location = "static/images"
 
 crystals = []
 
+
+
 @app.route('/')
 def home():
     return render_template('home.html')
 
-@app.route('/insert', methods={'GET', 'POST'})
+@app.route('/insert', methods=['GET', 'POST'])
 def insert():
     if request.method == "POST":
         crystal_name = request.form["name"]
@@ -24,10 +26,14 @@ def insert():
         crystal_image = request.files["image"]
         crystal_category = request.form["category"]
 
+        filename = crystal_image.filename
+        filepath = os.path.join(file_save_location, filename)
+        crystal_image.save(filepath)
+
         new_crystal = {
             "name": crystal_name,
             "description": crystal_description,
-            "image": crystal_image,
+            "image": filename,
             "category": crystal_category
         }
         crystals.append(new_crystal)
