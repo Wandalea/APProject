@@ -73,42 +73,49 @@ def remove():
 def categories():
     session_storage()
 
+
     crystalTypes = [
         {
             "name": "Raw Crystals",
             "description": "Natural and unpolished crystals",
             "image" : "rawCrystals.jpg",
-            "crystals" : ["Raw Amethyst", "Raw Quartz"]
+            "Uses" : "",
+            "crystals" : []
         },
         {
             "name": "Tumbled Crystals",
             "description": "Smooth polished pocket crystals",
             "image": "tumbledCrystals.jpg",
-            "crystals" : ["Tumbled Rose Quartz", "Tumbled Obsidian"]
+            "Uses" : "",
+            "crystals" : []
         },
         {
             "name": "Crystal Towers",
             "description": "Pointed standing crystal pieces",
             "image": "towerCrystals.jpg",
-            "crystals" : ["Selenite Tower", "Obsidian Tower", "Amethyst Tower"]
+            "Uses" : "",
+            "crystals" : []
         },
         {
             "name": "Carved Crystals",
             "description": "Hand carved crystal pieces",
             "image": "carvedCrystals.jpg",
-            "crystals" : ["Amazonite Cat", "Aquamarine Dog"]
+            "Uses" : "",
+            "crystals" : []
         },
         {
             "name": "Crystal Hearts",
             "description": "Heart shaped crystal pieces",
             "image": "heartCrystals.jpg",
-            "crystals" : ["Axinite Heart", "Black Moonstone Heart"]
+            "Uses" : "",
+            "crystals" : []
         },
         {
             "name": "Crystal Clusters",
             "description": "Grouped crystal pieces",
             "image": "clusterCrystals.jpg",
-            "crystals" : ["Blue Aragonite Cluster", "Black Tourmaline Cluster"]
+            "Uses" : "",
+            "crystals" : []
         },
     ]
     return render_template("categories.html", crystalTypes=crystalTypes)
