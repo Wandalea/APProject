@@ -3,21 +3,27 @@
 
 {% block content %}
 <div class="page">
-    <h1>Crystal Types</h1>
-    <p>Choose a Crystal category to discover.</p>
-        <div class="grid">
-        {% for crystal in crystalTypes %}
-            <div class="card">
-                <div class="text">
-                    <h2><a href="{{ url_for('category_page', category_name=crystal.name) }}">{{crystal.name}}</a></h2>
-                    <p>{{crystal.description}}</p>
-                </div>
-                <div class="image">
-                    <img src="{{ url_for('static', filename='images/' + crystal.image) }}" alt="{{ crystal.name }}">
-                         
-                </div>
+        <div class="container">
+        <h1 class="text-white">Crystal Types</h1>
+        <p class="text-light">Choose a Crystal category to discover.</p>
+    
+        <div class="row justify-content-center g-4 mt-3">
+            {% for crystal in crystalTypes %}
+            <div class= "col-md-4 col-lg-3">
+                <div class="my-card">
+                    <div class="text">
+                        <h2><a href="{{ url_for('category_page', category_name=crystal.name) }}">{{crystal.name}}</a></h2>
+                        <p>{{crystal.description}}</p>
+                    </div>
+                    <div class="image">
+                        <img src="{{ url_for('static', filename='images/' + crystal.image) }}" alt="{{ crystal.name }}">
+                    </div>
+                 </div>
             </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
     </div>
 </div>
 {% endblock %}
+                    
+                
