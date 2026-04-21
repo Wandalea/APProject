@@ -62,7 +62,7 @@ def remove():
 
         for crystal in session["crystals"]:
             if not (crystal["name"].lower() == crystal_name.lower()
-                    and crystal["category"] == crystal_category):
+                    and crystal["category"].lower() == crystal_category.lower()):
                 updated_crystals.append(crystal)
         session["crystals"] = updated_crystals
 
