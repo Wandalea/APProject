@@ -1,9 +1,11 @@
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 from flask_session import Session
 import os
+from flask_bootstrap import Bootstrap5
 
 app = Flask(__name__)
 app.secret_key = "mysecretkey123"
+bootstrap = Bootstrap5(app)
 
 app.config['SESSION_PERMANENT'] = True
 app.config['SESSION_TYPE'] = "filesystem"
@@ -29,6 +31,7 @@ def insert():
         crystal_name = request.form["name"]
         crystal_description = request.form["description"]
         crystal_image = request.files["image"]
+        crystal_uses = request.form["uses"]
         crystal_category = request.form["category"]
 
         filename = crystal_image.filename
@@ -40,6 +43,7 @@ def insert():
             "name": crystal_name,
             "description": crystal_description,
             "image": filename,
+            "uses": crystal_uses,
             "category": crystal_category
         }
 
