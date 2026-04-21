@@ -80,40 +80,40 @@ def categories():
                 "name": "Raw Crystals",
                 "description": "Natural and unpolished crystals",
                 "image" : "rawCrystals.jpg",
-                "Uses" : "",
+                "uses" : "",
             },
             {
                 "name": "Tumbled Crystals",
                 "description": "Smooth polished pocket crystals",
                 "image": "tumbledCrystals.jpg",
-                "Uses" : "",
+                "uses" : "",
             },
             {
                 "name": "Crystal Towers",
                 "description": "Pointed standing crystal pieces",
                 "image": "towerCrystals.jpg",
-                "Uses" : "",
+                "uses" : "",
                 
             },
             {
                 "name": "Carved Crystals",
                 "description": "Hand carved crystal pieces",
                 "image": "carvedCrystals.jpg",
-                "Uses" : "",
+                "uses" : "",
                 
             },
             {
                 "name": "Crystal Hearts",
                 "description": "Heart shaped crystal pieces",
                 "image": "heartCrystals.jpg",
-                "Uses" : "",
+                "uses" : "",
                 
             },
             {
                 "name": "Crystal Clusters",
                 "description": "Grouped crystal pieces",
                 "image": "clusterCrystals.jpg",
-                "Uses" : "",
+                "uses" : "",
                 
             },
         ]
