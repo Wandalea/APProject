@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="page">
+    <h1>Remove a crystal from your collection</h1>
+
+    <form id="remove_crystal_form" method="POST" action="{{ url_for('remove') }}">
+        <label for="name"> Crystal Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="category">Crystal Category</label>
+        <select id="category" name="category" required>
+            <option value="Raw Crystals">Raw Crystals</option>
+            <option value="Tumbled Crystals">Tumbled Crystals</option>
+            <option value="Crystal Towers">Crystal Towers</option>
+            <option value="Carved Crystals">Carved Crystals</option>
+            <option value="Crystal Hearts">Crystal Hearts</option>
+            <option value="Crystal Clusters">Crystal Clusters</option>
+        </select>
+
+        <button class="btn btn-primary">Remove Crystal from collection</button>
+    </form>
+</div>
+{% endblock %}

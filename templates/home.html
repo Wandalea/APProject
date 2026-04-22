@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="home">
+    <h1>Crystal Collection Services</h1>
+    <p>Welcome to the Crystal Collabratorium!<br>Here you can discover crystals and make your  very own  collection.</p>
+
+    <div class="home-buttons">
+        <a href="{{ url_for('categories') }}" class="home-btn">Browse Categories</a>
+        <a href="{{ url_for('insert') }}" class="home-btn">Add a Crystal</a>
+        <a href="{{ url_for('remove') }}" class="home-btn">Remove a Crystal</a>
+
+
+    </div>
+</div>
+
+{% endblock %}
