@@ -11,16 +11,18 @@ python  --version.
 venv\Scripts\activate
 ```
 5. Install the required packages using
- ```sh
+```sh
 pip install flask flask-session
 ```
-or if the application includes a requirements.txt file you will need all of the packages in that. You can use ```sh 
+or if the application includes a requirements.txt file you will need all of the packages in that. You can use 
+```sh
 pip install -r requirements.txt
-```Then you run the application by typing the command
+```
+6. Then you run the application by typing the command
 ```sh
 python app.py
-``` 
+```
 in the terminal or command line
-10. Next you will see a link to a url you can copy and paste it into your browser or hold the control key on you keyboard and click the link
-11. Now the web application should show in your browser.
+7. Next you will see a link to a url you can copy and paste it into your browser or hold the control key on you keyboard and click the link
+8. Now the web application should show in your browser.
 
