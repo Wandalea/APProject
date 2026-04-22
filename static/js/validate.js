@@ -1,5 +1,12 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const form= document.getElementById("crystal_form");
+    console.log("validate.js loaded");
+    const form= document.getElementById("insert_form");
+
+
+
+    if(!form){
+        return;
+    }
 
     const nameInput = document.getElementById("name");
     const descriptionInput = document.getElementById("description");
@@ -12,6 +19,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const imageError = document.getElementById("imageError");
     const usesError = document.getElementById("usesError");
     const categoryError = document.getElementById("categoryError");
+
 
     function clearErrors() {
         nameError.textContent = "";
@@ -28,6 +36,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     form.addEventListener("submit", function (event) {
+        console.log("submit event done")
         clearErrors();
 
         let isValid = true;
