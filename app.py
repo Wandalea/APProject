@@ -34,10 +34,10 @@ def insert():
     session_storage()
 
     if request.method == "POST":
-        crystal_name = request.form["name"]
-        crystal_description = request.form["description"]
+        crystal_name = request.form["name"].strip()
+        crystal_description = request.form["description"].strip()
         crystal_image = request.files["image"]
-        crystal_uses = request.form["uses"]
+        crystal_uses = request.form["uses"].strip()
         crystal_category = request.form["category"]
 
         valid_categories = [
