@@ -3,31 +3,43 @@
 
 {% block content %}
 <div class="page">
-    <h1>Add a crystal to your collection</h1>
+    <div class="container">
+        <h1 class="text-white mb-4">Add a crystal to your collection</h1>
 
-    <form method="POST" action="{{ url_for('insert') }}" enctype="multipart/form-data">
-        <label for="name">Crystal Name:</label>
-        <input type="text" id="name" name="name" required>
-
-        <label for="description">Description:</label>
-        <input type="text" id="description" name="description">
-       
-        <input type="file" id="image" name="image" required>
-
-        <label for="uses">Uses:</label>
-        <input type="text" id="uses" name="uses">
-
-        <label for="category">category</label>
-        <select id="category" name="category" required>
-            <option value="Raw Crystals">Raw Crystals</option>
-            <option value="Tumbled Crystals">Tumbled Crystals</option>
-            <option value="Crystal Towers">Crystal Towers</option>
-            <option value="Carved Crystals">Carved Crystals</option>
-            <option value="Crystal Hearts">Crystal Hearts</option>
-            <option value="Crystal Clusters">Crystal Clusters</option>
-        </select>
-
-        <button type="submit">Add Crystal to collection</button>
-    </form>
+        <form method="POST" action="{{ url_for('insert') }}" enctype="multipart/form-data">
+            <div class="row g-3">
+                <div class="col-md-6 text-start">
+                    <label class="form-label text-white">Crystal Name:</label>
+                    <input type="text" class="form-control" name="name" required>
+                </div>
+                <div class="col-md-6 text-start">
+                    <label class="form-label text-white">Description:</label>
+                    <input type="text" class="form-control" name="description">
+                </div>
+                <div class="col-md-6 text-start">
+                    <label class="form-label text-white">Crystal Image</label>
+                    <input type="file" class="form-control" name="image" required>
+                </div>
+                <div class="col-md-6 text-start">
+                    <label class="form-label text-white">Uses:</label>
+                    <input type="text" class="form-control" name="uses">
+                </div>
+                <div class="col-12 text-start">
+                    <label class="form-label text-white">Category</label>
+                    <select class="form-select" name="category" required>
+                        <option value="Raw Crystals">Raw Crystals</option>
+                        <option value="Tumbled Crystals">Tumbled Crystals</option>
+                        <option value="Crystal Towers">Crystal Towers</option>
+                        <option value="Carved Crystals">Carved Crystals</option>
+                        <option value="Crystal Hearts">Crystal Hearts</option>
+                        <option value="Crystal Clusters">Crystal Clusters</option>
+                    </select>
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary w-100 mt-3">Add Crystal to collection</button>
+                </div>
+            </div>
+        </form>
+    </div>
 </div>
 {% endblock %}   
