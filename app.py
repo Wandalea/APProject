@@ -2,6 +2,9 @@ from flask import Flask, render_template, request, redirect, url_for, session, f
 from flask_session import Session
 import os
 from flask_bootstrap import Bootstrap5
+from werkzeug.utils import secure_filename
+
+ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg", "webp"}
 
 app = Flask(__name__)
 app.secret_key = "mysecretkey123"
@@ -19,6 +22,9 @@ def session_storage():
     if "next_crystal" not in session:
         session["next_crystal"] = 1
 
+def allowed_file(filename):
+    return "." in filename and filename.rsplit(".", 1)[1].lower() in ALLOWED_EXTENSIONS
+
 @app.route('/')
 def home():
     return render_template('home.html')
@@ -34,7 +40,44 @@ def insert():
         crystal_uses = request.form["uses"]
         crystal_category = request.form["category"]
 
-        filename = crystal_image.filename
+        valid_categories = [
+            "Raw Crystals",
+            "Tumbled Crystals",
+            "Crystal Towers",
+            "Carved Crystals",
+            "Crystal Hearts",
+            "Crystal Clusters"
+        ]
+
+        if crystal_name == "":
+            flash("Crystal name is required.")
+            return redirect(url_for("insert"))
+
+        if len(crystal_name) < 2:
+            flash("Crystal name must be at least 2 characters.")
+            return redirect(url_for("insert"))
+
+        if len(crystal_description) > 200:
+            flash("Description must be 200 characters or less.")
+            return redirect(url_for("insert"))
+
+        if len(crystal_uses) > 100:
+            flash("Uses must be 100 characters or less.")
+            return redirect(url_for("insert"))
+
+        if crystal_category not in valid_categories:
+            flash("Invalid category selected.")
+            return redirect(url_for("insert"))
+
+        if not crystal_image or crystal_image.filename == "":
+            flash("Please upload an image.")
+            return redirect(url_for("insert"))
+
+        if not allowed_file(crystal_image.filename):
+            flash("Only PNG, JPG, JPEG, and WEBP image files are allowed.")
+            return redirect(url_for("insert"))
+
+        filename = secure_filename(crystal_image.filename)
         filepath = os.path.join(file_save_location, filename)
         crystal_image.save(filepath)
 
@@ -50,7 +93,7 @@ def insert():
         crystals = session["crystals"]
         crystals.append(new_crystal)
         session["crystals"] = crystals
-        session["next_crystal"] = session["next_crystal"] +1
+        session["next_crystal"] += 1
         
         return redirect(url_for("category_page", category_name =crystal_category))
     return render_template("insert.html")
